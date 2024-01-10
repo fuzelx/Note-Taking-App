@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css">
+    <title>Sign Up</title>
+</head>
+<style>
+    
+</style>
+<body  class="flex justify-center items-center pt-14">
+   <div id="signup-container"  class="rounded-lg mt-10 custom-shadow  flex justify-center items-center flex-col p-5 shadow-custom">
+        <h1 class="m-4 text-3xl text-lime-500 font-bold">Sign Up</h1>
+        <form id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required class="p-3 focus:outline-none focus:border-2 focus:border-lime-500 block rounded-lg border border-neutral-400">
+            <br>
+            <label for="name">Full name:</label>
+            <input type="text" id="name" required class="p-3 focus:outline-none focus:border-2 focus:border-lime-500 block rounded-lg border border-neutral-400">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required class="p-3 focus:outline-none focus:border-2 focus:border-lime-500 block rounded-lg border border-neutral-400">
+            <br>
+           <button id="btn" type="submit" class="w-full text-white font-semibold py-3 rounded-lg border-none bg-lime-500 hover:bg-lime-700">Sign Up</button>
+        </form>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, set, ref }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+      
+        const firebaseConfig = {
+          apiKey: "AIzaSyDfCQQgNYDMEdZGvnR0Udr4LPF42IJc16g",
+          authDomain: "notes-app-b6d5d.firebaseapp.com",
+          databaseURL: "https://notes-app-b6d5d-default-rtdb.firebaseio.com",
+          projectId: "notes-app-b6d5d",
+          storageBucket: "notes-app-b6d5d.appspot.com",
+          messagingSenderId: "288599577112",
+          appId: "1:288599577112:web:b86d96f5f30dd5c132e96d",
+          measurementId: "G-2S09PHH330"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
+        let name = document.getElementById('name');
+        let form = document.getElementById('signup-form')
+
+
+        let registerUser = evt =>{
+            evt.preventDefault();
+
+
+            createUserWithEmailAndPassword(auth, email.value, password.value)
+            .then((credentials)=>{
+set(ref(db, 'UserAuthList/'+ credentials.user.uid),{
+    fullname: name.value
+})
+alert('Account created succesfully!')
+window.location.href = 'login.html'
+            })
+      
+            .catch((error)=>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        form.addEventListener('submit', registerUser)
+      </script>
+</body>
+</html>
