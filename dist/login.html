@@ -12,137 +12,25 @@
     }
 </style>
 <body class="flex justify-center items-center pt-14">
-   <div id="signup-container" class="rounded-lg mt-10  flex justify-center items-center flex-col p-5 shadow-custom">
-        <h1 class="m-4 text-3xl text-lime-500 font-bold">Log In</h1>
+   <div id="signup-container" class="rounded-lg round mt-10  flex justify-center items-center flex-col p-5 shadow-custom">
+        <h1 class="m-4 text-3xl text-sky-500 font-bold">Log In</h1>
         <form id="signup-form" class="w-full">
             <label for="email">Email:</label>
-            <input type="email" id="email" class="p-3 focus:outline-none focus:border-2 focus:border-lime-500 block rounded-lg border border-neutral-400" required>
+            <input type="email" id="email" class="p-3 focus:outline-none focus:border-2 focus:border-sky-500 block rounded-lg border border-neutral-400" required>
         
             <br>
             <label for="password">Password:</label>
-            <input type="password" class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-lime-500" id="password" required>
+            <input type="password" class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-sky-500" id="password" required>
             <br>
             <div class="flex justify-center items-center">
-           <button id="btn" type="submit" class="w-full text-white font-semibold py-3 rounded-lg border-none bg-lime-500 hover:bg-lime-700" >Sign in</button>
+           <button id="btn" type="submit" class="w-full text-white font-semibold py-3 rounded-lg border-none bg-sky-500 hover:bg-sky-700" >Sign in</button>
             </div>
             <div class="py-4 flex justify-center items-center">
-                <a href="reg.html" class="text-lime-500 text-sm text-center">Don't have an account? Sign up</a>
+                <a href="reg.html" class="text-sky-500 text-sm text-center">Don't have an account? Sign up</a>
             </div>
         </form>
     </div>
-    <script type="module">
-//         // Import the functions you need from the SDKs you need
-//         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-//         import { getDatabase, set, ref, child }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-//         import { getAuth, signInWithEmailAndPassword }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-      
-//         const firebaseConfig = {
-//           apiKey: "AIzaSyDfCQQgNYDMEdZGvnR0Udr4LPF42IJc16g",
-//           authDomain: "notes-app-b6d5d.firebaseapp.com",
-//           databaseURL: "https://notes-app-b6d5d-default-rtdb.firebaseio.com",
-//           projectId: "notes-app-b6d5d",
-//           storageBucket: "notes-app-b6d5d.appspot.com",
-//           messagingSenderId: "288599577112",
-//           appId: "1:288599577112:web:b86d96f5f30dd5c132e96d",
-//           measurementId: "G-2S09PHH330"
-//         };
-      
-//         // Initialize Firebase
-//         const app = initializeApp(firebaseConfig);
-//         const db = getDatabase();
-//         const auth = getAuth(app);
-// const dbref =ref(db);
 
-
-//         let email = document.getElementById('email');
-//         let password = document.getElementById('password');
-//         let name = document.getElementById('name');
-//         let form = document.getElementById('signup-form')
-
-
-//         let signInUser = evt =>{
-//             evt.preventDefault();
-
-
-//             signInWithEmailAndPassword(auth, email.value, password.value)
-//             .then((credentials)=>{
-// getDatabase(child(dbref, 'UserAuthList/'+ credentials.user.uid)).then((snapshot)=>{
-//     if(snapshot.exists){
-//         sessionStorage.setItem("user-info", JSON.stringify({
-//           fullname:snapshot.val().firstname
-//         }));
-//         sessionStorage.setItem("user-cred", JSON.stringify(credentials.user));
-//         window.location.href='index.html';
-
-//     }
-// })
-
-//             })
-//             .catch((error)=>{
-//                 alert(error.message);
-//                 console.log(error.code);
-//                 console.log(error.message);
-//             })
-//         }
-
-
-
-//         form.addEventListener('submit', signInUser)
-//       
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDfCQQgNYDMEdZGvnR0Udr4LPF42IJc16g",
-  authDomain: "notes-app-b6d5d.firebaseapp.com",
-  databaseURL: "https://notes-app-b6d5d-default-rtdb.firebaseio.com",
-  projectId: "notes-app-b6d5d",
-  storageBucket: "notes-app-b6d5d.appspot.com",
-  messagingSenderId: "288599577112",
-  appId: "1:288599577112:web:b86d96f5f30dd5c132e96d",
-  measurementId: "G-2S09PHH330"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const auth = getAuth(app);
-const dbref = ref(db);
-
-let email = document.getElementById('email');
-let password = document.getElementById('password');
-let name = document.getElementById('name');
-let form = document.getElementById('signup-form')
-
-let signInUser = evt => {
-    evt.preventDefault();
-
-    signInWithEmailAndPassword(auth, email.value, password.value)
-        .then((credentials) => {
-            const userRef = child(dbref, 'UserAuthList/' + credentials.user.uid);
-
-            // Use 'get' function to retrieve data from the reference
-            get(userRef).then((snapshot) => {
-                if (snapshot.exists()) {
-                    sessionStorage.setItem("user-info", JSON.stringify({
-                        fullname: snapshot.val().fullname
-                    }));
-                    sessionStorage.setItem("user-cred", JSON.stringify(credentials.user));
-                    window.location.href = 'index.html';
-                }
-            });
-        })
-        .catch((error) => {
-            alert(error.message);
-            console.log(error.code);
-            console.log(error.message);
-        })
-}
-
-form.addEventListener('submit', signInUser);
-
-</script>
+<script src="login.js"></script>
 </body>
 </html>

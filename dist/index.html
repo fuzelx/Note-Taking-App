@@ -4,34 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/56a4b8eed4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="output.css">
     <title>Notes app</title>
 </head>
 <style>
     .custom-shadow {
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
     }
 </style>
 
 <body>
     <div class="main">
-        <nav class="flex p-4 justify-between w-full custom-shadow  items-center fixed top-0 bg-lime-500 ">
+        <nav class="flex p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-sky-400 ">
             <h1 class="text-3xl text-white font-bold">Notes</h1>
 
             <button id="logout"
-                class="bg-white p-3 rounded-lg text-lime-500 font-semibold hover:bg-lime-600 hover:text-white">Log
+                class="bg-white p-3 rounded-lg text-sky-400 font-semibold hover:bg-sky-600 hover:text-white"><i class="fa-solid fa-user-xmark fa-lg" style="color: #38bdf8;"></i> Log
                 Out</button>
         </nav>
         <div class="mt-10 pt-10">
-            <div id="banner" class="mt-8 p-6 bg-lime-200 rounded-lg m-2">
-                <h1 class="text-lime-600 font-bold text-xl md:text-3xl" id="msg"></h1>
-                <h1 class="text-lime-600 font-bold text-xl  md:text-3xl" id="greet"></h1>
+            <div id="banner" class="mt-8 p-6 bg-sky-200 rounded-lg m-2">
+                <h1 class="text-sky-400 font-bold text-xl md:text-3xl" id="msg"></h1>
+                <h1 class="text-sky-700 font-bold text-xl  md:text-3xl" id="greet"></h1>
             </div>
         </div>
-        <div class="p-2 shadow-lg mt-4 w-80 rounded-lg">
-            <div class="flex justify-evenly items-center">
-                <div>
+        
+            <div class="flex justify-center  items-center">
+                <div class="flex justify-center items-center w-80 rounded-lg flex-col custom-shadow p-2 ">
                     <div>
                         <label for="noteTitle">Title:</label>
                         <input type="text" id="noteTitle" placeholder="Enter title"
@@ -41,153 +42,21 @@
                     <div>
                         <label for="noteContent">Content:</label>
                         <textarea id="noteContent" placeholder="Enter content"
-                            class="p-3 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-lime-500"></textarea>
+                            class="p-4 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-lime-500"></textarea>
                     </div>
-                    <button class="p-3 rounded-lg bg-lime-500 m-3" id="addNote">Add Note</button>
+                    <button class="p-3 rounded-lg bg-sky-500 hover:bg-sky-700 font-semibold text-white m-3" id="addNote">Add Note</button>
                 </div>
             </div>
-            </div>
-            <div id="container" class="flex flex-col justify-between items-center p-3"></div>
-        </div>
+          
+       
+        <div id="container" class="flex flex-col justify-center items-center p-3"></div>
     </div>
     </div>
+    </div>
 
 
-
-    <!-- <h2 id="msg"></h2>
-<h2 id="greet"></h2>    -->
-
-    <script>
-        let userCred = JSON.parse(sessionStorage.getItem("user-cred"));
-        let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
-
-        let msgHead = document.getElementById('msg');
-        let greetHead = document.getElementById('greet');
-        let signoutBtn = document.getElementById('logout');
-
-        console.log(userInfo.fullname);
-
-        msgHead.innerHTML = `User with email"${userCred.email}" Logged in.`;
-        greetHead.innerHTML = `Welcome ${userInfo.fullname}`;
-
-        let signout = () => {
-            sessionStorage.removeItem("user-cred");
-            sessionStorage.removeItem("user-info");
-            window.location.href = 'login.html'
-        };
-
-        let checkCred = () => {
-            if (!sessionStorage.getItem("user-cred"))
-                window.location.href = 'login.html'
-        };
-
-
-        window.addEventListener('load', checkCred);
-        signoutBtn.addEventListener('click', signout)
-    </script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, ref, get, child, onChildAdded, push, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-        const firebaseConfig = {
-            // Your Firebase configuration
-            apiKey: "AIzaSyDfCQQgNYDMEdZGvnR0Udr4LPF42IJc16g",
-            authDomain: "notes-app-b6d5d.firebaseapp.com",
-            databaseURL: "https://notes-app-b6d5d-default-rtdb.firebaseio.com",
-            projectId: "notes-app-b6d5d",
-            storageBucket: "notes-app-b6d5d.appspot.com",
-            messagingSenderId: "288599577112",
-            appId: "1:288599577112:web:b86d96f5f30dd5c132e96d",
-            measurementId: "G-2S09PHH330"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        function saveNote() {
-            var noteTitle = document.getElementById('noteTitle').value;
-            var noteContent = document.getElementById('noteContent').value;
-
-            // Get a reference to the "notes" node in the Realtime Database
-            const notesRef = ref(db, 'notes');
-
-            // Push a new note to the "notes" node in the Realtime Database
-            push(notesRef, {
-                title: noteTitle,
-                content: noteContent,
-                timestamp: new Date().toISOString()  // Use current timestamp
-            })
-                .then(function (newNoteRef) {
-                    console.log('Note saved with ID: ', newNoteRef.key);
-                })
-                .catch(function (error) {
-                    console.error('Error adding note: ', error);
-                });
-        }
-
-
-        function deleteNote(noteId) {
-            // Get a reference to the specific note in the Realtime Database
-            const noteRef = ref(db, `notes/${noteId}`);
-
-            // Remove the note from the database
-            remove(noteRef)
-                .then(function () {
-                    console.log('Note deleted successfully');
-                })
-                .catch(function (error) {
-                    console.error('Error deleting note: ', error);
-                });
-        }
-
-
-        function displayNotes() {
-            // Listen for child_added events in the "notes" node in the Realtime Database
-            onChildAdded(ref(db, 'notes'), function (childSnapshot) {
-                var noteData = childSnapshot.val();
-
-                var noteId = childSnapshot.key;  // Retrieve the note's unique ID
-
-
-                var notesContainer = document.getElementById('container');
-                var card = document.createElement('div');
-                card.classList.add('p-3', 'bg-lime-200', 'shadow-md', 'rounded-md', 'm-3', 'w-82');
-
-                var titleElement = document.createElement('h2');
-                titleElement.classList.add('font-bold', 'text-left', 'text-lime-700', 'text-2xl');
-                titleElement.textContent = noteData.title || 'Untitled';
-
-                var contentElement = document.createElement('p');
-                contentElement.classList.add('font-semibold', 'text-left', 'text-lime-600', 'text-xl');
-                contentElement.textContent = noteData.content || 'No content';
-
-
-                var deleteButton = document.createElement('button');
-                deleteButton.classList.add('rounded-md', 'p-2', 'bg-lime-600')
-                deleteButton.textContent = '⛌';
-                deleteButton.onclick = function () {
-                    deleteNote(noteId);
-                }
-
-                card.appendChild(titleElement);
-                card.appendChild(contentElement);
-                card.appendChild(deleteButton);
-
-                notesContainer.appendChild(card);
-            })
-        }
-
-
-
-
-
-        var addNoteBtn = document.getElementById('addNote');
-        addNoteBtn.onclick = saveNote;
-        displayNotes();
-
-
-    </script>
+<script src="home.js"></script>
+    <script type="module" src="home2.js"></script>
 </body>
 
 </html>
