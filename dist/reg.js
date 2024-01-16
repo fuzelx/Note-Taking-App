@@ -37,7 +37,7 @@ set(ref(db, 'UserAuthList/'+ credentials.user.uid),{
 fullname: name.value
 })
 alert('Account created succesfully!')
-window.location.href = 'login.html'
+window.location.href = 'index.html'
     })
 
     .catch((error)=>{

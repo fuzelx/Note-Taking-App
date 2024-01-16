@@ -1,62 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/56a4b8eed4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="output.css">
-    <title>Notes app</title>
+    <title>login</title>
 </head>
 <style>
-    .custom-shadow {
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
+    .shadow-custom{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 </style>
-
-<body>
-    <div class="main">
-        <nav class="flex p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-sky-400 ">
-            <h1 class="text-3xl text-white font-bold">Notes</h1>
-
-            <button id="logout"
-                class="bg-white p-3 rounded-lg text-sky-400 font-semibold hover:bg-sky-600 hover:text-white"><i class="fa-solid fa-user-xmark fa-lg" style="color: #38bdf8;"></i> Log
-                Out</button>
-        </nav>
-        <div class="mt-10 pt-10">
-            <div id="banner" class="mt-8 p-6 bg-sky-200 rounded-lg m-2">
-                <h1 class="text-sky-400 font-bold text-xl md:text-3xl" id="msg"></h1>
-                <h1 class="text-sky-700 font-bold text-xl  md:text-3xl" id="greet"></h1>
-            </div>
-        </div>
+<body class="flex justify-center items-center pt-14">
+   <div id="signup-container" class="rounded-lg round mt-10  flex justify-center items-center flex-col p-5 shadow-custom">
+        <h1 class="m-4 text-3xl text-sky-500 font-bold">Log In</h1>
+        <form id="signup-form" class="w-full">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="p-3 focus:outline-none focus:border-2 focus:border-sky-500 block rounded-lg border border-neutral-400" required>
         
-            <div class="flex justify-center  items-center">
-                <div class="flex justify-center items-center w-80 rounded-lg flex-col custom-shadow p-2 ">
-                    <div>
-                        <label for="noteTitle">Title:</label>
-                        <input type="text" id="noteTitle" placeholder="Enter title"
-                            class="p-3 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-lime-500">
-                    </div>
-
-                    <div>
-                        <label for="noteContent">Content:</label>
-                        <textarea id="noteContent" placeholder="Enter content"
-                            class="p-4 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-lime-500"></textarea>
-                    </div>
-                    <button class="p-3 rounded-lg bg-sky-500 hover:bg-sky-700 font-semibold text-white m-3" id="addNote">Add Note</button>
-                </div>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-sky-500" id="password" required>
+            <br>
+            <div class="flex justify-center items-center">
+           <button id="btn" type="submit" class="w-full text-white font-semibold py-3 rounded-lg border-none bg-sky-500 hover:bg-sky-700" >Sign in</button>
             </div>
-          
-       
-        <div id="container" class="flex flex-col justify-center items-center p-3"></div>
-    </div>
-    </div>
+            <div class="py-4 flex justify-center items-center">
+                <a href="reg.html" class="text-sky-500 text-sm text-center">Don't have an account? Sign up</a>
+            </div>
+        </form>
     </div>
 
-
-<script src="home.js"></script>
-    <script type="module" src="home2.js"></script>
+<script src="login.js"></script>
 </body>
-
 </html>

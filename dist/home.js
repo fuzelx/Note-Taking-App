@@ -20,7 +20,7 @@ let signout = () => {
 
 let checkCred = () => {
     if (!sessionStorage.getItem("user-cred"))
-        window.location.href = 'login.html'
+        window.location.href = 'index.html'
 };
 
 
