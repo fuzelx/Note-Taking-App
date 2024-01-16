@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 
 let userCred = JSON.parse(sessionStorage.getItem("user-cred"));
 let userInfo = JSON.parse(sessionStorage.getItem("user-info"));

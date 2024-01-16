@@ -1,19 +1,18 @@
-// Import the functions you need from the SDKs you need
-require('dotenv').config();
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, set, ref }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+    apiKey: "AIzaSyDfCQQgNYDMEdZGvnR0Udr4LPF42IJc16g",
+    authDomain: "notes-app-b6d5d.firebaseapp.com",
+    databaseURL: "https://notes-app-b6d5d-default-rtdb.firebaseio.com",
+    projectId: "notes-app-b6d5d",
+    storageBucket: "notes-app-b6d5d.appspot.com",
+    messagingSenderId: "288599577112",
+    appId: "1:288599577112:web:b86d96f5f30dd5c132e96d",
+    measurementId: "G-2S09PHH330"
 };
 
 // Initialize Firebase
