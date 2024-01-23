@@ -3,30 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700;800&family=Share+Tech&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="output.css">
-    <title>login</title>
+    <title>Log In | GroupChat</title>
 </head>
 <style>
+    body{
+        background: url(assets/layered-waves-haikei.svg)no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+    font-family: 'Manrope', sans-serif;
+   }
     .shadow-custom{
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+    #signup-container{
+        background:#001220 ;
+    }
 </style>
 <body class="flex justify-center items-center pt-14">
-   <div id="signup-container" class="rounded-lg round mt-10  flex justify-center items-center flex-col p-5 shadow-custom">
-        <h1 class="m-4 text-3xl text-sky-500 font-bold">Log In</h1>
+   <div id="signup-container" class="rounded-lg border-2 border-white/30 round mt-10  flex justify-center items-center flex-col p-5 shadow-custom">
+        <h1 class="m-4 text-3xl  text-sky-500 font-bold">Log In</h1>
         <form id="signup-form" class="w-full">
-            <label for="email">Email:</label>
-            <input type="email" id="email" class="p-3 focus:outline-none focus:border-2 focus:border-sky-500 block rounded-lg border border-neutral-400" required>
+            <label class="text-sky-500" for="email">Email:</label>
+            <input type="email" id="email" class="p-3 focus:outline-none focus:border-2 focus:border-sky-500 block rounded-lg border border-neutral-400" required placeholder="Email">
         
             <br>
-            <label for="password">Password:</label>
-            <input type="password" class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-sky-500" id="password" required>
+            <label class="text-sky-500" for="password">Password:</label>
+            <input type="password" class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-sky-500" id="password" required placeholder="Password">
             <br>
             <div class="flex justify-center items-center">
            <button id="btn" type="submit" class="w-full text-white font-semibold py-3 rounded-lg border-none bg-sky-500 hover:bg-sky-700" >Sign in</button>
             </div>
             <div class="py-4 flex justify-center items-center">
-                <a href="reg.html" class="text-sky-500 text-sm text-center">Don't have an account? Sign up</a>
+                <a href="reg.html" class="text-sky-300 text-sm mt-3 text-center">Don't have an account? Sign up</a>
             </div>
         </form>
     </div>

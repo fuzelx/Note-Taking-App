@@ -52,4 +52,15 @@ let signInUser = evt => {
         })
 }
 
+let handleKeyPress = evt => {
+    // Check if the Enter key (key code 13) is pressed
+    if (evt.key === 'Enter') {
+        signInUser(evt);
+    }
+}
+
+// Add a key event listener to the form
 form.addEventListener('submit', signInUser);
+
+// Add a key event listener to handle the Enter key press
+form.addEventListener('keypress', handleKeyPress);

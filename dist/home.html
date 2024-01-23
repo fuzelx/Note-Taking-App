@@ -5,57 +5,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/56a4b8eed4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700;800&family=Share+Tech&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="output.css">
-    <title>Notes app</title>
+    <title>Groupnotes Web App</title>
 </head>
 <style>
+    .bold{
+        font-weight: bold;
+        font-size: 43px;
+        line-height: 1;
+    }
+    .height{
+        height: fit-content;
+    }
+    .custom-color{
+    color: #03045e;
+    }
+    .custom-color-p{
+    color: #023e8a;
+    }
+    #banner {
+        background: url(assets/blurry-gradient-haikei.svg)no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
     .custom-shadow {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
     }
+    .trans{
+        transform: translate(-50%, -50%);
+    }
+
+    body {
+        background: #001220;
+        font-family: 'Poppins', sans-serif;
+    }
+    @media only screen and (max-width: 768px) {
+ .bold{
+    font-size: 38px;
+ }
+}
+
 </style>
 
 <body>
     <div class="main">
-        <nav class="flex p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-sky-400 ">
-            <h1 class="text-3xl text-white font-bold">Notes</h1>
-
+        <nav
+            class="flex p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-sky-400 border-b border-white/30 ">
+            <h1 class="text-3xl text-white font-bold">GroupNotes</h1>
+            <div>
+                <ul>
+                    <li class="font-semibold text-white text-sm" id="date"></li>
+                    <li class="font-semibold text-white text-sm" id="time"></li>
+                </ul>
+            </div>
             <button id="logout"
-                class="bg-white p-3 rounded-lg text-sky-400 font-semibold hover:bg-sky-600 hover:text-white"><i class="fa-solid fa-user-xmark fa-lg" style="color: #38bdf8;"></i> Log
+                class="bg-white p-3 rounded-lg text-sky-400 font-semibold hover:bg-sky-600 hover:text-white"><i
+                    class="fa-solid fa-user-xmark fa-lg" style="color: #38bdf8;"></i> Log
                 Out</button>
         </nav>
+
+        <nav class="p-4 rounded-3xl shadow-lg flex justify-center items-center trans w-52 fixed backdrop-blur-md bottom-4 left-2/4 right-2/4  bg-white/30 border border-white/30">
+
+            <button
+            class="px-4 py-3 bg-sky-600 text-white font-semibold z-10 rounded-3xl border-2 border-white"
+             id="pop-new-btn" onclick="popup()">New Note</button>
+             <button
+             class="px-4 py-3 bg-sky-700 hidden text-white z-10  rounded-3xl border-2 border-whitetext-white font-semibold"
+              id="pop-close-btn" onclick="closePop()">Close</button>
+        </nav>
+
         <div class="mt-10 pt-10">
-            <div id="banner" class="mt-8 p-6 bg-sky-200 rounded-lg m-2">
-                <h1 class="text-sky-400 font-bold text-xl md:text-3xl" id="msg"></h1>
-                <h1 class="text-sky-700 font-bold text-xl  md:text-3xl" id="greet"></h1>
+            <div id="banner" class="mt-8 shadow-lg border border-white/30 p-6 bg-sky-200 rounded-lg m-2">
+                <h1 class="text-skoy-700 font-bold text-xl md:text-3xl" id="msg"></h1>
+                <h1 class="text-neutral-900 font-bold text-xl  md:text-3xl" id="greet"></h1>
             </div>
         </div>
-        
-            <div class="flex justify-center  items-center">
-                <div class="flex justify-center items-center w-80 rounded-lg flex-col custom-shadow p-2 ">
-                    <div>
-                        <label for="noteTitle">Title:</label>
-                        <input type="text" id="noteTitle" placeholder="Enter title"
-                            class="p-3 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-lime-500">
-                    </div>
 
-                    <div>
-                        <label for="noteContent">Content:</label>
-                        <textarea id="noteContent" placeholder="Enter content"
-                            class="p-4 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-lime-500"></textarea>
-                    </div>
-                    <button class="p-3 rounded-lg bg-sky-500 hover:bg-sky-700 font-semibold text-white m-3" id="addNote">Add Note</button>
+        <div class="flex justify-center  items-center">
+            <div id="inputBox"
+                class="flex hidden justify-center border-2 border-white/30 bg-sky-300 items-center w-80 rounded-lg flex-col custom-shadow p-2 ">
+                <div>
+                    <label for="noteTitle">Title:</label>
+                    <input type="text" id="noteTitle" placeholder="Enter title"
+                        class="p-3 block bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-sky-500">
                 </div>
+
+                <div>
+                    <label for="noteContent">Content:</label>
+                    <textarea id="noteContent" placeholder="Enter content"
+                        class="p-4 block  bg-neutral-200 border rounded-md border-neutral-300 focus:outline-none focus:border-2 focus:border-sky-500 "></textarea>
+                </div>
+                <div>
+
+                    <label for="imageInput">Image:</label>
+                    <input id="imageInput" type="file"
+                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+
+
+                </div>
+                <button class="p-3 rounded-lg bg-sky-700 hover:bg-sky-800 font-semibold text-white m-3" id="addNote">Add
+                    Note</button>
             </div>
-          
-       
-        <div id="container" class="flex flex-col justify-center items-center p-3"></div>
+
+        </div>
+
+
+        <div id="container"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-3 "></div>
+
     </div>
     </div>
     </div>
 
 
-<script src="home.js"></script>
+    <script src="home.js"></script>
     <script type="module" src="home2.js"></script>
 </body>
 

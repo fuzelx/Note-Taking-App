@@ -1,7 +1,7 @@
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, set, ref }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, set, update, ref }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -30,13 +30,19 @@ let registerUser = evt =>{
     evt.preventDefault();
 
 
+    let userName = name.value;
+
     createUserWithEmailAndPassword(auth, email.value, password.value)
     .then((credentials)=>{
-set(ref(db, 'UserAuthList/'+ credentials.user.uid),{
-fullname: name.value
-})
-alert('Account created succesfully!')
-window.location.href = 'index.html'
+        const userUid = credentials.user.uid;
+        return update(ref(db, 'UserAuthList/' + userUid), {
+            fullname: userName,
+});
+    })
+.then(() => {
+    alert('Account created successfully!');
+    window.location.href = 'index.html';
+
     })
 
     .catch((error)=>{
