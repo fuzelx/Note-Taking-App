@@ -166,6 +166,10 @@ addNoteBtn.onclick = function() {
         
 
         function displayNotes() {
+                  // Show the loader while notes are loading
+  var loader = document.getElementById('loader');
+  loader.style.display = 'block';
+
             // Listen for child_added events in the "notes" node in the Realtime Database
             onChildAdded(ref(db, 'notes'), function (childSnapshot) {
               var noteData = childSnapshot.val();
@@ -213,6 +217,9 @@ addNoteBtn.onclick = function() {
           
               // notesContainer.appendChild(card);
               notesContainer.insertBefore(card, notesContainer.firstChild);
+                    
+                       // Hide the loader after notes are loaded
+    loader.style.display = 'none';
             });
           }
           
