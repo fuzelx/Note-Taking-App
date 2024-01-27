@@ -177,15 +177,16 @@ addNoteBtn.onclick = function() {
           
               var notesContainer = document.getElementById('container');
               var card = document.createElement('div');
-              card.classList.add('p-3', 'bg-sky-400', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
+              card.classList.add('p-3', 'bg-white', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
           
               var username = document.createElement('p');
               username.classList.add('text-sm','font-semibold')
               username.innerText = userInfo.fullname;
 
               var time = document.createElement('span');
-              time.classList.add('text-sm','font-semibold', 'text-neutral-300')
+              time.classList.add('text-xs', 'text-neutral-100', 'mt-5')
               time.innerText = 'Created at: '+ noteData.timestamp;
+
 
               var deleteButton = document.createElement('button');
               deleteButton.classList.add('rounded-3xl');
@@ -194,23 +195,25 @@ addNoteBtn.onclick = function() {
                 deleteNote(noteId);
               };
           
+             
               var titleElement = document.createElement('h2');
-              titleElement.classList.add('font-extrabold','bold', 'text-left', 'custom-color', 'text-2xl');
+              titleElement.classList.add('font-extrabold','mt-3','bold','md:text-2xl',  'text-left', 'text-black', 'text-xl');
               titleElement.textContent = noteData.title || 'Untitled';
           
               var contentElement = document.createElement('p');
-              contentElement.classList.add('font-semibold', 'text-left', 'custom-color-p', 'text-xl');
+              contentElement.classList.add('font-semibold','mt-3', 'text-left', 'text-black', 'text-lg', 'md:text-xl');
               contentElement.textContent = noteData.content || 'No content';
           
+              card.appendChild(deleteButton);
               // Check if the note has an imageUrl
               if (noteData.imageUrl) {
                 var imageElement = document.createElement('img');
                 imageElement.src = noteData.imageUrl;
-                imageElement.classList.add('max-w-full', 'my-3');
+                imageElement.classList.add('max-w-full','rounded-md', 'my-3');
                 card.appendChild(imageElement);
               }
             card.appendChild(username)
-              card.appendChild(deleteButton);
+     
               card.appendChild(titleElement);
               card.appendChild(contentElement);
               card.appendChild(time)
