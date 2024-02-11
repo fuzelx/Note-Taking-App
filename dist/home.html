@@ -110,33 +110,32 @@
             </div>
         </div>
 
-        <div class="flex justify-center  items-center">
-            <div id="inputBox"
-                class="flex hidden justify-center border-2 border-white/30 bg-sky-300 items-center w-80 rounded-lg flex-col custom-shadow p-2 ">
-                <div>
-                    <label for="noteTitle">Title:</label>
-                   <input type="text" id="noteTitle" placeholder="Enter title"
-                        class="p-3 block bg-transparent  border-neutral-300 border-b-2 md:w-64 w-60 focus:outline-none focus:border-b-2 focus:border-sky-500">
-                 </div>
-
-                <div>
-                    <label for="noteContent">Content:</label>
-                   <textarea id="noteContent" placeholder="Enter content"
-                        class="p-4 block  bg-transparent  border-neutral-300 border-b-2   focus:outline-none focus:border-b-2 placeholder-black focus:border-sky-500 "></textarea>
-                 </div>
-                <div>
-
-                    <label for="imageInput">Image:</label>
-                    <input id="imageInput" type="file"
-                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-
-
-                </div>
-                <button class="p-3 rounded-lg bg-sky-700 hover:bg-sky-800 font-semibold text-white m-3" id="addNote">Add
-                    Note</button>
-            </div>
-
+       <div class="flex justify-center items-center">
+    <div id="inputBox"
+        class="flex hidden justify-center border border-gray-300 bg-white rounded-lg flex-col custom-shadow p-2">
+        <div class="mb-3">
+            <label for="noteTitle" class="block text-gray-700">Title:</label>
+            <input type="text" id="noteTitle" placeholder="Enter title"
+                class="p-3 block bg-transparent border-b-2 border-sky-500 focus:outline-none focus:border-b-2 focus:border-sky-700">
         </div>
+
+        <div class="mb-3">
+            <label for="noteContent" class="block text-gray-700">Content:</label>
+            <textarea id="noteContent" placeholder="Enter content"
+                class="p-4 block bg-transparent border-b-2 border-sky-500 focus:outline-none focus:border-b-2 focus:border-sky-700"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="imageInput" class="block text-gray-700">Image:</label>
+            <input id="imageInput" type="file"
+                class="focus:ring-sky-500 focus:border-sky-500 block w-full sm:text-sm border-gray-300 rounded-md">
+        </div>
+
+        <button class="p-3 rounded-lg bg-sky-700 hover:bg-sky-800 font-semibold text-white m-3" id="addNote">Add
+            Note</button>
+    </div>
+</div>
+
 
 <!-- Loader element -->
   <div id="loader" class="loader"></div>
