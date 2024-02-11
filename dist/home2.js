@@ -282,9 +282,7 @@ function displayNotes() {
 
         card.appendChild(deleteButton);
         card.appendChild(userName);
-        card.appendChild(titleElement);
-        card.appendChild(contentElement);
-        card.appendChild(time);
+       
 
         // Check if the note has an imageUrl
         if (noteData.imageUrl) {
@@ -293,7 +291,10 @@ function displayNotes() {
             imageElement.classList.add('max-w-full','rounded-md', 'my-3');
             card.appendChild(imageElement);
         }
-
+ card.appendChild(titleElement);
+        card.appendChild(contentElement);
+        card.appendChild(time);
+            
         notesContainer.insertBefore(card, notesContainer.firstChild);
 
         // Hide the loader after notes are loaded
