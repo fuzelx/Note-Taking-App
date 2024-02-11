@@ -165,73 +165,157 @@ addNoteBtn.onclick = function() {
         let year1 = new Date().getFullYear();
         
 
-        function displayNotes() {
-                  // Show the loader while notes are loading
-  var loader = document.getElementById('loader');
-  loader.style.display = 'block';
+  //       function displayNotes() {
+  //                 // Show the loader while notes are loading
+  // var loader = document.getElementById('loader');
+  // loader.style.display = 'block';
 
-            // Listen for child_added events in the "notes" node in the Realtime Database
-            onChildAdded(ref(db, 'notes'), function (childSnapshot) {
-              var noteData = childSnapshot.val();
-              var noteId = childSnapshot.key;  // Retrieve the note's unique ID
+  //           // Listen for child_added events in the "notes" node in the Realtime Database
+  //           onChildAdded(ref(db, 'notes'), function (childSnapshot) {
+  //             var noteData = childSnapshot.val();
+  //             var noteId = childSnapshot.key;  // Retrieve the note's unique ID
           
-              var notesContainer = document.getElementById('container');
-              var card = document.createElement('div');
-              card.classList.add('p-3', 'bg-white', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
+  //             var notesContainer = document.getElementById('container');
+  //             var card = document.createElement('div');
+  //             card.classList.add('p-3', 'bg-white', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
           
-              var username = document.createElement('p');
-              username.classList.add('text-sm','font-semibold')
-              username.innerText = userInfo.fullname;
+  //             var username = document.createElement('p');
+  //             username.classList.add('text-sm','font-semibold')
+  //             username.innerText = userInfo.fullname;
 
-              var time = document.createElement('span');
-              time.classList.add('text-xs', 'text-neutral-100', 'mt-5')
-              time.innerText = 'Created at: '+ noteData.timestamp;
+  //             var time = document.createElement('span');
+  //             time.classList.add('text-xs', 'text-neutral-100', 'mt-5')
+  //             time.innerText = 'Created at: '+ noteData.timestamp;
 
 
-              var deleteButton = document.createElement('button');
-              deleteButton.classList.add('rounded-3xl');
-              deleteButton.textContent = '⛌';
-              deleteButton.onclick = function () {
-                deleteNote(noteId);
-              };
+  //             var deleteButton = document.createElement('button');
+  //             deleteButton.classList.add('rounded-3xl');
+  //             deleteButton.textContent = '⛌';
+  //             deleteButton.onclick = function () {
+  //               deleteNote(noteId);
+  //             };
           
              
-              var titleElement = document.createElement('h2');
-              titleElement.classList.add('font-extrabold','mt-3','bold','md:text-2xl',  'text-left', 'text-black', 'text-xl');
-              titleElement.textContent = noteData.title || 'Untitled';
+  //             var titleElement = document.createElement('h2');
+  //             titleElement.classList.add('font-extrabold','mt-3','bold','md:text-2xl',  'text-left', 'text-black', 'text-xl');
+  //             titleElement.textContent = noteData.title || 'Untitled';
           
-              var contentElement = document.createElement('p');
-              contentElement.classList.add('font-semibold','mt-3', 'text-left', 'text-black', 'text-lg', 'md:text-xl');
-              contentElement.textContent = noteData.content || 'No content';
+  //             var contentElement = document.createElement('p');
+  //             contentElement.classList.add('font-semibold','mt-3', 'text-left', 'text-black', 'text-lg', 'md:text-xl');
+  //             contentElement.textContent = noteData.content || 'No content';
           
-              card.appendChild(deleteButton);
-              // Check if the note has an imageUrl
-              if (noteData.imageUrl) {
-                var imageElement = document.createElement('img');
-                imageElement.src = noteData.imageUrl;
-                imageElement.classList.add('max-w-full','rounded-md', 'my-3');
-                card.appendChild(imageElement);
-              }
-            card.appendChild(username)
+  //             card.appendChild(deleteButton);
+  //             // Check if the note has an imageUrl
+  //             if (noteData.imageUrl) {
+  //               var imageElement = document.createElement('img');
+  //               imageElement.src = noteData.imageUrl;
+  //               imageElement.classList.add('max-w-full','rounded-md', 'my-3');
+  //               card.appendChild(imageElement);
+  //             }
+  //           card.appendChild(username)
      
-              card.appendChild(titleElement);
-              card.appendChild(contentElement);
-              card.appendChild(time)
+  //             card.appendChild(titleElement);
+  //             card.appendChild(contentElement);
+  //             card.appendChild(time)
           
-              // notesContainer.appendChild(card);
-              notesContainer.insertBefore(card, notesContainer.firstChild);
+  //             // notesContainer.appendChild(card);
+  //             notesContainer.insertBefore(card, notesContainer.firstChild);
                     
-                       // Hide the loader after notes are loaded
-    loader.style.display = 'none';
-            });
-          }
+  //                      // Hide the loader after notes are loaded
+  //   loader.style.display = 'none';
+  //           });
+  //         }
           
 
 
 
 
 
-        // var addNoteBtn = document.getElementById('addNote');
-        // addNoteBtn.onclick = saveNote;
-        displayNotes();
+  //       // var addNoteBtn = document.getElementById('addNote');
+  //       // addNoteBtn.onclick = saveNote;
+  //       displayNotes();
+
+
+function displayNotes() {
+    // Show the loader while notes are loading
+    var loader = document.getElementById('loader');
+    loader.style.display = 'block';
+
+    // Listen for child_added events in the "notes" node in the Realtime Database
+    onChildAdded(ref(db, 'notes'), function (childSnapshot) {
+        var noteData = childSnapshot.val();
+        var noteId = childSnapshot.key;  // Retrieve the note's unique ID
+
+        var notesContainer = document.getElementById('container');
+        var card = document.createElement('div');
+        card.classList.add('p-3', 'bg-white', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
+
+        var time = document.createElement('span');
+        time.classList.add('text-xs', 'text-neutral-100', 'mt-5');
+        time.innerText = 'Created at: ' + noteData.timestamp;
+
+        var deleteButton = document.createElement('button');
+        deleteButton.classList.add('rounded-3xl');
+        deleteButton.textContent = '⛌';
+        deleteButton.onclick = function () {
+            deleteNote(noteId);
+        };
+
+        var titleElement = document.createElement('h2');
+        titleElement.classList.add('font-extrabold','mt-3','bold','md:text-2xl',  'text-left', 'text-black', 'text-xl');
+        titleElement.textContent = noteData.title || 'Untitled';
+
+        var contentElement = document.createElement('p');
+        contentElement.classList.add('font-semibold','mt-3', 'text-left', 'text-black', 'text-lg', 'md:text-xl');
+        contentElement.textContent = noteData.content || 'No content';
+
+        // Fetch the user's display name
+        var userName = document.createElement('p');
+        userName.classList.add('text-sm','font-semibold');
+        getUserInfo(noteData.userId)
+            .then(userInfo => {
+                userName.innerText = userInfo.fullname;
+            })
+            .catch(error => {
+                console.error('Error fetching user info:', error);
+            });
+
+        card.appendChild(deleteButton);
+        card.appendChild(userName);
+        card.appendChild(titleElement);
+        card.appendChild(contentElement);
+        card.appendChild(time);
+
+        // Check if the note has an imageUrl
+        if (noteData.imageUrl) {
+            var imageElement = document.createElement('img');
+            imageElement.src = noteData.imageUrl;
+            imageElement.classList.add('max-w-full','rounded-md', 'my-3');
+            card.appendChild(imageElement);
+        }
+
+        notesContainer.insertBefore(card, notesContainer.firstChild);
+
+        // Hide the loader after notes are loaded
+        loader.style.display = 'none';
+    });
+}
+
+// Function to fetch user information based on their user ID
+function getUserInfo(userId) {
+    return get(ref(db, `UserAuthList/${userId}`))
+        .then(snapshot => {
+            if (snapshot.exists()) {
+                return snapshot.val();
+            } else {
+                throw new Error('User information not found');
+            }
+        });
+}
+
+// Call the displayNotes function after the page is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    displayNotes();
+});
+
 
