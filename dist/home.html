@@ -12,6 +12,26 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="output.css">
+     <script>
+        window.onload = function () {
+            // Check if the user is online
+            if (!navigator.onLine) {
+                // Redirect to the offline page
+                window.location.href = "offline.html";
+            }
+        };
+    
+        // Listen for online/offline events
+        window.addEventListener('online', function () {
+            // Redirect to the home page when the user comes online
+            window.location.href = "home.html";
+        });
+    
+        window.addEventListener('offline', function () {
+            // Redirect to the offline page when the user goes offline
+            window.location.href = "offline.html";
+        });
+    </script>
     <title>Groupnotes Web App</title>
 </head>
 <style>
