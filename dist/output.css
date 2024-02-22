@@ -679,7 +679,21 @@ video {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.bg-none {
+  background-image: none;
+}
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.left-3\/4 {
+  left: 75%;
+}
 .rounded-md {
   border-radius: 0.375rem;
 }
