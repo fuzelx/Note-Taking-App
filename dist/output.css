@@ -935,7 +935,21 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(7 89 133 / var(--tw-bg-opacity));
 }
+.text-\[\#FF6868\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 104 104 / var(--tw-text-opacity));
+}
+.bg-\[\#FFEAA7\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 234 167 / var(--tw-bg-opacity));
+}
 
+.w-44 {
+  width: 11rem;
+}
+.w-32{
+width:8rem;
+}
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
