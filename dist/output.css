@@ -709,6 +709,10 @@ video {
 .border-b {
   border-bottom-width: 1px;
 }
+.bg-\[\#FF6868\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 104 104 / var(--tw-bg-opacity));
+}
 
 .border-none {
   border-style: none;
