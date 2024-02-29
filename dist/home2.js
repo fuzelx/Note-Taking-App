@@ -73,6 +73,8 @@ addNoteBtn.onclick = function() {
 };
 
 
+
+
         function saveNote(auth) {
             var noteTitle = document.getElementById('noteTitle').value;
             var noteContent = document.getElementById('noteContent').value;
@@ -235,6 +237,7 @@ addNoteBtn.onclick = function() {
   //       // addNoteBtn.onclick = saveNote;
   //       displayNotes();
 
+  let nav_user = document.getElementById('acc-user');
 
 function displayNotes() {
     // Show the loader while notes are loading
@@ -271,9 +274,11 @@ function displayNotes() {
 
         // Fetch the user's display name
         var userName = document.createElement('p');
+        
         userName.classList.add('text-sm','font-semibold');
         getUserInfo(noteData.userId)
             .then(userInfo => {
+              
                 userName.innerText = userInfo.fullname;
             })
             .catch(error => {
@@ -318,5 +323,6 @@ function getUserInfo(userId) {
 document.addEventListener('DOMContentLoaded', function() {
     displayNotes();
 });
+
 
 

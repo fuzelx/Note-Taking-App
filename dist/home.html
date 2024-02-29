@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gloria+Hallelujah&family=Honk&family=Indie+Flower&family=Outfit:wght@100..900&family=Pacifico&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/56a4b8eed4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,10 +103,13 @@
 <body>
     <div class="main">
         <nav
-            class="flex p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-white border-b border-white/30 ">
+            class="flex hidden md:block  p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-white border-b border-white/30 ">
             <h1 class="text-3xl text-white font-bold">
                    <img src="assets/darkLogo.svg" class="w-44" alt="">
             </h1>
+            <div class="">
+                <a href="about.html" class="p-2 text-lg text-black font-semibold hover:text-[#FF6868]">About</a>
+            </div>
             <div>
                 <ul>
                     <li class="font-semibold text-black text-sm" id="date"></li>
@@ -114,6 +121,48 @@
                     class="fa-solid fa-user-xmark fa-lg hover:text-white " style="color: #000000; "></i> </button>
 
         </nav>
+
+      
+  <!-- Mobile Navbar -->
+  <nav class="bg-white p-3 custom-shadow">
+    <div class="flex items-center justify-between">
+      <!-- Logo or Branding (if needed) -->
+      <a href="#" class="text-white font-bold">
+        <img src="assets/darkLogo.svg" alt="logo" class="w-44">
+      </a>
+
+      <!-- Hamburger Icon -->
+      <button id="mobileMenuButton" class="text-black focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Side Menu (Initially Hidden) -->
+  <div id="sideMenu" class="hidden fixed inset-0 bg-white custom-shadow  z-50">
+    <div class="flex justify-end p-4">
+      <button id="closeMenuButton" class="text-black">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <ul class="flex flex-col items-center">
+      <div class="flex flex-col justify-center p-4 rounded-md shadow-lg  items-center">
+<img src="assets/man.png" class="w-16 h-16" alt="">
+<p class="text-black" id="acc-user"></p>
+      </div>
+      <li><a href="about.html" class="text-black">About</a></li>
+   
+    </ul>
+  </div>
+<!-- end -->
 
         <nav
             class="md:p-4 rounded-3xl bg-none left-3/4 shadow-lg  flex justify-center items-center trans md:w-52 fixed md:backdrop-blur-md bottom-4 md:left-2/4 md:right-2/4  md:bg-white/30 md:border md:border-white/30">
@@ -163,15 +212,23 @@
   <div id="loader" class="loader"></div>
 
         <div id="container"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-3 "></div>
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-3 p-3 "></div>
 
     </div>
     
-    <div class="flex flex-col bg-sky-500 p-4 justify-start items-start">
- <h1 class="text-black text-3xl mb-4 font-bold text">GroupNotes</h1>
- <p class="text-neutral-950 font-semibold ">Crafted in India with ❤</p>
- <p class="text-neutral-950 font-semibold ">by Fuzail, Abrar, Sameer ,Varun & Yasar</p>
-    </div>
+    <footer class="bg-[#000000] border-t border-neutral-300 text-white py-4">
+        <div class="container mx-auto flex flex-col items-center justify-center">
+          <!-- Logo -->
+          <img src="assets/lightLogo.svg" alt="Company Logo" class="h-8 w-48 mb-2">
+    <p class="">Crafted In India with ❤</p>
+          <!-- Copyright text -->
+          <p class="text-sm">&copy; 2024 GroupNotes. All rights reserved.</p>
+    
+          <!-- Additional links or social media icons can be added here -->
+    
+        </div>
+      </footer>
+    
 
     </div>
     </div>
@@ -179,7 +236,17 @@
 
     <script src="home.js"></script>
     <script type="module" src="home2.js"></script>
+    <script>
+        // Toggle side menu visibility
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+          document.getElementById('sideMenu').classList.remove('hidden');
+        });
     
+        // Close side menu when close button is clicked
+        document.getElementById('closeMenuButton').addEventListener('click', function() {
+          document.getElementById('sideMenu').classList.add('hidden');
+        });
+      </script>
 </body>
 
 </html>

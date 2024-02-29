@@ -9,7 +9,8 @@ let signoutBtn = document.getElementById('logout');
 
 console.log(userInfo.fullname);
 
-
+let nav_user = document.getElementById('acc-user');
+nav_user.innerHTML =userInfo.fullname;
 
 var morningStart = 6;
 var afternoonStart = 12;
