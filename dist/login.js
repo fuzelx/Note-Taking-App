@@ -26,31 +26,39 @@ let email = document.getElementById('email');
 let password = document.getElementById('password');
 let name = document.getElementById('name');
 let form = document.getElementById('signup-form')
-
 let signInUser = evt => {
     evt.preventDefault();
 
     signInWithEmailAndPassword(auth, email.value, password.value)
         .then((credentials) => {
-            const userRef = child(dbref, 'UserAuthList/' + credentials.user.uid);
+            const user = credentials.user;
 
-            // Use 'get' function to retrieve data from the reference
-            get(userRef).then((snapshot) => {
-                if (snapshot.exists()) {
-                    sessionStorage.setItem("user-info", JSON.stringify({
-                        fullname: snapshot.val().fullname
-                    }));
-                    sessionStorage.setItem("user-cred", JSON.stringify(credentials.user));
-                    window.location.href = 'home.html';
-                }
-            });
+            if (user.emailVerified) {
+                // User's email is verified
+                const userRef = child(dbref, 'UserAuthList/' + user.uid);
+
+                // Use 'get' function to retrieve data from the reference
+                get(userRef).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        sessionStorage.setItem("user-info", JSON.stringify({
+                            fullname: snapshot.val().fullname
+                        }));
+                        sessionStorage.setItem("user-cred", JSON.stringify(user));
+                        window.location.href = 'home.html';
+                    }
+                });
+            } else {
+                // User's email is not verified
+                alert('Please verify your email before logging in.');
+            }
         })
         .catch((error) => {
             alert(error.message);
             console.log(error.code);
             console.log(error.message);
-        })
+        });
 }
+
 
 let handleKeyPress = evt => {
     // Check if the Enter key (key code 13) is pressed

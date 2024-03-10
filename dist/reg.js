@@ -2,7 +2,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, set, update, ref }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification }  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDfCQQgNYDMEdZGvnR0Udr4LPF42IJc16g",
@@ -33,16 +33,21 @@ let registerUser = evt =>{
     let userName = name.value;
 
     createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((credentials)=>{
+    .then((credentials) => {
         const userUid = credentials.user.uid;
-        return update(ref(db, 'UserAuthList/' + userUid), {
-            fullname: userName,
-});
-    })
-.then(() => {
-    alert('Account created successfully!');
-    window.location.href = 'index.html';
 
+        // Send email verification
+        return sendEmailVerification(auth.currentUser);
+    })
+    .then(() => {
+        // Update user profile data
+        return update(ref(db, 'UserAuthList/' + auth.currentUser.uid), {
+            fullname: userName,
+        });
+    })
+    .then(() => {
+        alert('Account created successfully! Please check your email for verification.');
+        window.location.href = 'index.html';
     })
 
     .catch((error)=>{
