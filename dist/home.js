@@ -1,7 +1,7 @@
 
 
-let userCred = JSON.parse(sessionStorage.getItem("user-cred"));
-let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+let userCred = JSON.parse(localStorage.getItem("user-cred"));
+let userInfo = JSON.parse(localStorage.getItem("user-info"));
 
 let msgHead = document.getElementById('msg');
 let greetHead = document.getElementById('greet');
@@ -69,13 +69,13 @@ timeElement.innerText =`${day}/${month}/${year}`;
 
 
 let signout = () => {
-    sessionStorage.removeItem("user-cred");
-    sessionStorage.removeItem("user-info");
+    localStorage.removeItem("user-cred");
+    localStorage.removeItem("user-info");
     window.location.href = 'index.html'
 };
 
 let checkCred = () => {
-    if (!sessionStorage.getItem("user-cred"))
+    if (!localStorage.getItem("user-cred"))
         window.location.href = 'index.html'
 };
 
