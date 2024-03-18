@@ -40,10 +40,10 @@ let signInUser = evt => {
                 // Use 'get' function to retrieve data from the reference
                 get(userRef).then((snapshot) => {
                     if (snapshot.exists()) {
-                        sessionStorage.setItem("user-info", JSON.stringify({
+                        localStorage.setItem("user-info", JSON.stringify({
                             fullname: snapshot.val().fullname
                         }));
-                        sessionStorage.setItem("user-cred", JSON.stringify(user));
+                        localStorage.setItem("user-cred", JSON.stringify(user));
                         window.location.href = 'home.html';
                     }
                 });
