@@ -123,6 +123,19 @@ addNoteBtn.onclick = function() {
         //   }
           
         function saveNote(auth) {
+let uploding = document.getElementById('uploading');
+uploding.innerHTML = `<div class="flex fixed top-7 right-[45%] z-20 justify-center items-center rounded-lg p-3  bg-white border-black border-2">
+<div>
+  <img src="assets/ZNeT.gif" class="w-16 h-16" alt="">
+</div>
+<div class="text-xl text-black ml-2 ">Uploading..</div>
+</div>`;
+
+// Set a timeout to remove the div after 2 seconds
+setTimeout(() => {
+    uploding.innerHTML = '';
+}, 4000);
+
           var noteTitle = document.getElementById('noteTitle').value;
           var noteContent = document.getElementById('noteContent').value;
           var imageInput = document.getElementById('imageInput');
@@ -177,6 +190,7 @@ addNoteBtn.onclick = function() {
           } else {
             console.log('User not authenticated');
           }
+        
         }
         
 
@@ -269,6 +283,7 @@ function displayNotes() {
 
         var notesContainer = document.getElementById('container');
         var card = document.createElement('div');
+        card.setAttribute("id", "")
         card.classList.add('p-3', 'bg-white', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
 
         var time = document.createElement('span');
@@ -317,14 +332,14 @@ function displayNotes() {
         }
         // Check if the note has a videoUrl
 
-    // Check if the note has a videoUrl
-    if (noteData.videoUrl) {
-      var videoElement = document.createElement('video');
-      videoElement.src = noteData.videoUrl;
-      videoElement.controls = true; // Adds playback controls
-      videoElement.classList.add('max-w-full', 'rounded-md', 'my-3');
-      card.appendChild(videoElement);
-    }
+  // Check if the note has a videoUrl
+ if (noteData.videoUrl) {
+    var videoElement = document.createElement('video');
+    videoElement.src = noteData.videoUrl;
+    videoElement.controls = true; // Adds playback controls
+    videoElement.classList.add('max-w-full', 'rounded-md', 'my-3');
+    card.appendChild(videoElement);
+} 
 
     // Check if the note has a fileUrl (generic file, could be image or video)
     if (noteData.fileUrl) {
@@ -342,6 +357,8 @@ function displayNotes() {
 
         // Hide the loader after notes are loaded
         loader.style.display = 'none';
+      
+        
     });
 }
 

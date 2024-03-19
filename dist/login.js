@@ -26,6 +26,8 @@ let email = document.getElementById('email');
 let password = document.getElementById('password');
 let name = document.getElementById('name');
 let form = document.getElementById('signup-form')
+let notify_container = document.getElementById('notify');
+
 let signInUser = evt => {
     evt.preventDefault();
 
@@ -45,6 +47,10 @@ let signInUser = evt => {
                         }));
                         sessionStorage.setItem("user-cred", JSON.stringify(user));
                         window.location.href = 'home.html';
+
+                        notify_container.innerHTML = `<div class="text-centre p-4 fixed top-6 right-[37%] bg-white text-2xl text-black font-bold rounded-lg border-2 border-black">
+                        Logged in successfully1
+                    </div>`
                     }
                 });
             } else {
