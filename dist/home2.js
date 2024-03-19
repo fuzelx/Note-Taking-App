@@ -124,7 +124,7 @@ addNoteBtn.onclick = function() {
           
         function saveNote(auth) {
 let uploding = document.getElementById('uploading');
-uploding.innerHTML = `<div class="flex fixed top-7 right-[45%] z-20 justify-center items-center rounded-lg p-3  bg-white border-black border-2">
+uploding.innerHTML = `<div class="flex fixed top-7 right-[45%] z-30 justify-center items-center rounded-lg p-3  bg-white border-black border-2">
 <div>
   <img src="assets/ZNeT.gif" class="w-16 h-16" alt="">
 </div>
@@ -190,6 +190,7 @@ setTimeout(() => {
           } else {
             console.log('User not authenticated');
           }
+          
         
         }
         
@@ -288,7 +289,11 @@ function displayNotes() {
 
         var time = document.createElement('span');
         time.classList.add('text-xs', 'text-neutral-100', 'mt-5');
-        time.innerText = 'Created at: ' + noteData.timestamp;
+      let  created_date = noteData.timestamp;
+       const dateCreated = new Date(created_date);
+       let formattedDate = dateCreated.toLocaleDateString();
+       let formattedTime = dateCreated.toLocaleTimeString();
+       time.innerText = "Created at: " + formattedDate + " on " + formattedTime;
 
         var deleteButton = document.createElement('button');
         deleteButton.classList.add('rounded-3xl');

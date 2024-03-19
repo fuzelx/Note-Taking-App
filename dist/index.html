@@ -1,52 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700;800&family=Share+Tech&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700;800&family=Share+Tech&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="output.css">
     <title>Log In | GroupNotes</title>
 </head>
 <style>
-    body{
-        background: url(assets/layered-waves-haikei\ \(2\).svg)no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;;
-    font-family: 'Manrope', sans-serif;
-   }
-    .shadow-custom{
+    body {
+        background: url(assets/layered-waves-haikei\ \(2\).svg)no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        ;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .shadow-custom {
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
-    #signup-container{
-        background:#FFEAA7 ;
+
+    #signup-container {
+        background: #FFEAA7;
     }
 </style>
+
 <body class="flex justify-center flex-col  items-center">
-    
+
     <div id="notify">
-        
+
     </div>
 
-   <div id="signup-container" class=" rounded-lg border-2  border-[#FFBB64] round mt-10 flex   flex justify-center items-center flex-col p-5 shadow-custom">
-    <div class="mt-3 mb-3">
-        <img src="assets/darkLogo.svg" alt="" class="h-8">
-    </div>
+    <div id="signup-container"
+        class=" rounded-lg border-2  border-[#FFBB64] round mt-10 flex   flex justify-center items-center flex-col p-5 shadow-custom">
+        <div class="mt-3 mb-3">
+            <img src="assets/darkLogo.svg" alt="" class="h-8">
+        </div>
         <h1 class="m-4 text-3xl  text-[#FF6868] font-bold">Log In</h1>
         <form id="signup-form" class="w-full">
             <label class="text-[#FF6868]" for="email">Email:</label>
-            <input type="email" id="email" class="p-3 focus:outline-none focus:border-2 focus:border-[#FF6868] block rounded-lg border border-neutral-400" required placeholder="Email">
-        
+            <input type="email" id="email"
+                class="p-3 focus:outline-none focus:border-2 focus:border-[#FF6868] block rounded-lg border border-neutral-400"
+                required placeholder="Email">
+
             <br>
             <label class="text-[#FF6868]" for="password">Password:</label>
-            <input type="password" class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-[#FF6868]" id="password" required placeholder="Password">
+            <input type="password"
+                class="p-3 block rounded-lg border border-neutral-400 focus:outline-none focus:border-2 focus:border-[#FF6868]"
+                id="password" required placeholder="Password">
             <br>
             <div class="flex justify-center items-center">
-           <button id="btn" type="submit" class="w-full text-white font-semibold py-3 rounded-lg border-none bg-[#FF6868] hover:bg-[#ff4d4d]" >Sign in</button>
+                <button id="btn" type="submit"
+                    class="w-full text-white font-semibold py-3 rounded-lg border-none bg-[#FF6868] hover:bg-[#ff4d4d]">Sign
+                    in</button>
             </div>
             <div class="py-4 flex justify-center items-center">
                 <a href="reg.html" class="text-[#FF6868] text-sm mt-3 text-center">Don't have an account? Sign up</a>
@@ -54,6 +68,7 @@
         </form>
     </div>
 
-<script type="module" src="login.js"></script>
+    <script type="module" src="login.js"></script>
 </body>
+
 </html>

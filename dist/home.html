@@ -2,263 +2,273 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gloria+Hallelujah&family=Honk&family=Indie+Flower&family=Outfit:wght@100..900&family=Pacifico&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gloria+Hallelujah&family=Honk&family=Indie+Flower&family=Outfit:wght@100..900&family=Pacifico&display=swap"
+    rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/56a4b8eed4.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700;800&family=Share+Tech&family=Share+Tech+Mono&display=swap"
-        rel="stylesheet">
+  <script src="https://kit.fontawesome.com/56a4b8eed4.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@400;500;600;700;800&family=Share+Tech&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="output.css">
-     <script>
-        window.onload = function () {
-            // Check if the user is online
-            if (!navigator.onLine) {
-                // Redirect to the offline page
-                window.location.href = "offline.html";
-            }
-        };
-    
-        // Listen for online/offline events
-        window.addEventListener('online', function () {
-            // Redirect to the home page when the user comes online
-            window.location.href = "home.html";
-        });
-    
-        window.addEventListener('offline', function () {
-            // Redirect to the offline page when the user goes offline
-            window.location.href = "offline.html";
-        });
-    </script>
-    <title>Groupnotes Web App</title>
+  <link rel="stylesheet" href="output.css">
+  <script>
+    window.onload = function () {
+      // Check if the user is online
+      if (!navigator.onLine) {
+        // Redirect to the offline page
+        window.location.href = "offline.html";
+      }
+    };
+
+    // Listen for online/offline events
+    window.addEventListener('online', function () {
+      // Redirect to the home page when the user comes online
+      window.location.href = "home.html";
+    });
+
+    window.addEventListener('offline', function () {
+      // Redirect to the offline page when the user goes offline
+      window.location.href = "offline.html";
+    });
+  </script>
+  <title>Groupnotes Web App</title>
 </head>
 <style>
-    .loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none; /* Initially hide the loader */
-}
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    /* Initially hide the loader */
+  }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
 
-    .bold{
-        font-weight: bold;
-        font-size: 43px;
-        line-height: 1;
+    100% {
+      transform: rotate(360deg);
     }
-    .height{
-        height: fit-content;
-    }
-    .custom-color{
+  }
+
+  .bold {
+    font-weight: bold;
+    font-size: 43px;
+    line-height: 1;
+  }
+
+  .height {
+    height: fit-content;
+  }
+
+  .custom-color {
     color: #03045e;
-    }
-    .custom-color-p{
+  }
+
+  .custom-color-p {
     color: #023e8a;
-    }
-    #banner {
-/*         background: url(assets/.svg)no-repeat center center fixed;
+  }
+
+  #banner {
+    /*         background: url(assets/.svg)no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover; */
-    }
+  }
 
-    .custom-shadow {
-        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
- 
-    }
-    .trans{
-        transform: translate(-50%, -50%);
-    }
+  .custom-shadow {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
-    body {
-          background: #ffffff;
-        font-family: 'Poppins', sans-serif;
-    }
-    @media only screen and (max-width: 768px) {
- .bold{
-    font-size: 38px;
- }
-}
+  }
 
+  .trans {
+    transform: translate(-50%, -50%);
+  }
+
+  body {
+    background: #ffffff;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .bold {
+      font-size: 38px;
+    }
+  }
 </style>
 
 <body>
-    <div class="main">
-     
-        <nav
-            class="flex  hidden p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-white border-b border-white/30 ">
-            <h1 class="text-3xl text-white font-bold">
-                   <img src="assets/darkLogo.svg" class="w-44" alt="">
-            </h1>
-            <div class="">
-                <a href="about.html" class="p-2 text-lg text-black font-semibold hover:text-[#FF6868]">About</a>
-            </div>
-            <div>
-                <ul>
-                    <li class="font-semibold text-black text-sm" id="date"></li>
-                    <li class="font-semibold text-black text-sm" id="time"></li>
-                </ul>
-            </div>
-           <button id="logout"
-                class="bg-white p-2 rounded-lg text- border-black border-2 font-semibold hover:text-white"><i
-                    class="fa-solid fa-user-xmark fa-lg hover:text-white " style="color: #000000; "></i> </button>
+  <div class="main">
 
-        </nav>
-        <div id="uploading" >
-          
-        </div>
-      
-  <!-- Mobile Navbar -->
-  <nav class="bg-white fixed top-0 w-full p-3 custom-shadow">
-    <div class="flex items-center justify-between">
-      <!-- Logo or Branding (if needed) -->
-      <a href="#" class="text-white font-bold">
-        <img src="assets/darkLogo.svg" alt="logo" class="w-44">
-      </a>
-
-      <!-- Hamburger Icon -->
-      <button id="mobileMenuButton" class="text-black focus:outline-none">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Side Menu (Initially Hidden) -->
-  <div id="sideMenu" class="hidden fixed inset-0 bg-white custom-shadow  z-50">
-    <div class="flex justify-end p-4">
-      <button id="closeMenuButton" class="text-black">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-    <ul class="flex flex-col items-center">
-      <div class="flex flex-col justify-center p-4 rounded-md shadow-lg  items-center">
-<img src="assets/man.png" class="w-16 h-16" alt="">
-<p class="text-black" id="acc-user"></p>
+    <nav
+      class="flex  hidden p-2 justify-between w-full custom-shadow  items-center fixed top-0 bg-white border-b border-white/30 ">
+      <h1 class="text-3xl text-white font-bold">
+        <img src="assets/darkLogo.svg" class="w-44" alt="">
+      </h1>
+      <div class="">
+        <a href="about.html" class="p-2 text-lg text-black font-semibold hover:text-[#FF6868]">About</a>
       </div>
-      <li class="mt-6 mb-6"><a href="about.html" class="text-black font-bold">About</a></li>
-   
-      <li> <button id="logout"
-        class="bg-white p-2 rounded-lg text- border-black border-2 font-semibold "><i
-            class="fa-solid fa-user-xmark fa-lg " style="color: #000000; "></i> Log out </button>
-</li>
-    </ul>
-  </div>
-<!-- end -->
+      <div>
+        <ul>
+          <li class="font-semibold text-black text-sm" id="date"></li>
+          <li class="font-semibold text-black text-sm" id="time"></li>
+        </ul>
+      </div>
+      <button id="logout" class="bg-white p-2 rounded-lg text- border-black border-2 font-semibold hover:text-white"><i
+          class="fa-solid fa-user-xmark fa-lg hover:text-white " style="color: #000000; "></i> </button>
 
-        <nav
-            class="md:p-4 rounded-3xl bg-none left-3/4 shadow-lg  flex justify-center items-center trans md:w-52 fixed md:backdrop-blur-md bottom-4 md:left-2/4 md:right-2/4  md:bg-white/30 md:border md:border-white/30">
+    </nav>
+    <div id="uploading">
 
-            <button class="px-6  py-6 bg-[#FF6868] text-white font-semibold z-10 shadow-xl rounded-full "
-                id="pop-new-btn" onclick="popup()"><i class="fa-solid fa-plus fa-2xl" style="color: #ffffff;"></i></button>
-            <button
-                class="px-6 py-6 bg-[#FF6868] hidden text-white z-10  rounded-full shadow-xl font-semibold"
-                id="pop-close-btn" onclick="closePop()"><i class="fa-solid fa-xmark fa-2xl" style="color: #ffffff;"></i></button>
-        </nav>
+    </div>
 
-        <div class="mt-10 pt-10">
-            <div id="banner" class="mt-5 bg-[#FFEAA7] shadow-lg border border-white/30 p-6  rounded-lg m-2">
-                <h1 class="text-[#FF6868] font-bold text-xl md:text-3xl" id="msg"></h1>
-                <h1 class="text-[#FF6868] font-bold text-xl  md:text-3xl" id="greet"></h1>
-            </div>
+    <!-- Mobile Navbar -->
+    <nav class="bg-white z-20 fixed top-0 w-full p-3 custom-shadow">
+      <div class="flex items-center justify-between">
+        <!-- Logo or Branding (if needed) -->
+        <a href="#" class="text-white font-bold">
+          <img src="assets/darkLogo.svg" alt="logo" class="w-44">
+        </a>
+
+        <!-- Hamburger Icon -->
+        <button id="mobileMenuButton" class="text-black focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Side Menu (Initially Hidden) -->
+    <div id="sideMenu" class="hidden fixed inset-0 bg-white custom-shadow  z-50">
+      <div class="flex justify-end p-4">
+        <button id="closeMenuButton" class="text-black">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <ul class="flex flex-col items-center">
+        <div class="flex flex-col justify-center p-4 rounded-md shadow-lg  items-center">
+          <img src="assets/man.png" class="w-16 h-16" alt="">
+          <p class="text-black" id="acc-user"></p>
         </div>
+        <li class="mt-6 mb-6"><a href="about.html" class="text-black font-bold">About</a></li>
 
-       <div class="flex justify-center items-center">
-    <div id="inputBox"
-        class="flex hidden justify-center border border-gray-300 bg-white rounded-lg flex-col custom-shadow p-2">
-        <div class="mb-3">
+        <li> <button id="logout" class="bg-white p-2 rounded-lg text- border-black border-2 font-semibold "><i
+              class="fa-solid fa-user-xmark fa-lg " style="color: #000000; "></i> Log out </button>
+        </li>
+      </ul>
+    </div>
+    <!-- end -->
+
+    <nav
+      class="md:p-4 z-20 rounded-3xl bg-none left-3/4 shadow-lg  flex justify-center items-center trans md:w-52 fixed md:backdrop-blur-md bottom-4 md:left-2/4 md:right-2/4  md:bg-white/30 md:border md:border-black/30">
+
+      <button class="px-6 z-10  py-6 bg-[#ff2929] text-white font-semibold  shadow-xl rounded-full " id="pop-new-btn"
+        onclick="popup()"><i class="fa-solid fa-plus fa-2xl" style="color: #ffffff;"></i></button>
+      <button class="px-6 py-6 bg-[#ff2929] hidden text-white z-10  rounded-full shadow-xl font-semibold"
+        id="pop-close-btn" onclick="closePop()"><i class="fa-solid fa-xmark fa-2xl"
+          style="color: #ffffff;"></i></button>
+    </nav>
+
+    <div class="mt-10 pt-10">
+      <div id="banner" class="mt-5 bg-[#FFEAA7] shadow-lg border border-white/30 p-6  rounded-lg m-2">
+        <h1 class="text-[#FF6868] font-bold text-xl md:text-3xl" id="msg"></h1>
+        <h1 class="text-[#FF6868] font-bold text-xl  md:text-3xl" id="greet"></h1>
+      </div>
+    </div>
+
+    <div class="flex justify-center items-center">
+
+      <div id="inputBox"
+        class="flex hidden fixed top- z-[25] justify-center border border-gray-300 bg-white rounded-lg flex-col custom-shadow p-2">
+       
+          <div class="mb-3">
+
             <label for="noteTitle" class="block text-gray-700">Title:</label>
             <input type="text" id="noteTitle" placeholder="Enter title"
-                class="p-3 block bg-transparent border-b-2 border-sky-500 focus:outline-none focus:border-b-2 focus:border-sky-700">
-        </div>
+              class="p-3 block bg-transparent border-b-2 border-sky-500 focus:outline-none focus:border-b-2 focus:border-sky-700">
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="noteContent" class="block text-gray-700">Content:</label>
             <textarea id="noteContent" placeholder="Enter content"
-                class="p-4 block bg-transparent border-b-2 border-sky-500 focus:outline-none focus:border-b-2 focus:border-sky-700"></textarea>
-        </div>
+              class="p-4 block bg-transparent border-b-2 border-sky-500 focus:outline-none focus:border-b-2 focus:border-sky-700"></textarea>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="imageInput" class="block text-gray-700">Image:</label>
             <input id="imageInput" type="file"
-                class="focus:ring-sky-500 focus:border-sky-500 block w-full sm:text-sm border-gray-300 rounded-md">
-                <label for="videoInput">video</label>
-                <input id="videoInput" type="file"
-                class="focus:ring-sky-500 focus:border-sky-500 block w-full sm:text-sm border-gray-300 rounded-md">
-      
-              
-              </div>
+              class="focus:ring-sky-500 focus:border-sky-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            <label for="videoInput">video</label>
+            <input id="videoInput" type="file"
+              class="focus:ring-sky-500 focus:border-sky-500 block w-full sm:text-sm border-gray-300 rounded-md">
 
-        <button class="p-3 rounded-lg bg-sky-700 hover:bg-sky-800 font-semibold text-white m-3" id="addNote">Add
+
+          </div>
+
+          <button class="p-3  rounded-lg bg-sky-700 hover:bg-sky-800 font-semibold text-white m-3" id="addNote">Add
             Note</button>
-    </div>
-</div>
-
-
-<!-- Loader element -->
-  <div id="loader" class="loader"></div>
-
-        <div id="container"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-3 p-3 "></div>
-
-    </div>
-    
-    <footer class="bg-[#000000] border-t border-neutral-300 text-white py-4">
-        <div class="container mx-auto flex flex-col items-center justify-center">
-          <!-- Logo -->
-          <img src="assets/lightLogo.svg" alt="Company Logo" class="h-8 w-48 mb-2">
-    <p class="">Crafted In India with ❤</p>
-          <!-- Copyright text -->
-          <p class="text-sm">&copy; 2024 GroupNotes. All rights reserved.</p>
-    
-          <!-- Additional links or social media icons can be added here -->
-    
-        </div>
-      </footer>
-    
-
-    </div>
+     
+      </div>
     </div>
 
 
-    <script src="home.js"></script>
-    <script type="module" src="home2.js"></script>
-    <script>
-        // Toggle side menu visibility
-        document.getElementById('mobileMenuButton').addEventListener('click', function() {
-          document.getElementById('sideMenu').classList.remove('hidden');
-        });
-    
-        // Close side menu when close button is clicked
-        document.getElementById('closeMenuButton').addEventListener('click', function() {
-          document.getElementById('sideMenu').classList.add('hidden');
-        });
-      </script>
+    <!-- Loader element -->
+    <div id="loader" class="loader"></div>
+
+    <div id="container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-3 p-3 "></div>
+
+  </div>
+
+  <footer class="bg-[#000000] border-t border-neutral-300 text-white py-4">
+    <div class="container mx-auto flex flex-col items-center justify-center">
+      <!-- Logo -->
+      <img src="assets/lightLogo.svg" alt="Company Logo" class="h-8 w-48 mb-2">
+      <p class="">Crafted In India with ❤</p>
+      <!-- Copyright text -->
+      <p class="text-sm">&copy; 2024 GroupNotes. All rights reserved.</p>
+
+      <!-- Additional links or social media icons can be added here -->
+
+    </div>
+  </footer>
+
+
+  </div>
+  </div>
+
+
+  <script src="home.js"></script>
+  <script type="module" src="home2.js"></script>
+  <script>
+    // Toggle side menu visibility
+    document.getElementById('mobileMenuButton').addEventListener('click', function () {
+      document.getElementById('sideMenu').classList.remove('hidden');
+    });
+
+    // Close side menu when close button is clicked
+    document.getElementById('closeMenuButton').addEventListener('click', function () {
+      document.getElementById('sideMenu').classList.add('hidden');
+    });
+  </script>
 </body>
 
 </html>
