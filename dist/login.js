@@ -42,10 +42,10 @@ let signInUser = evt => {
                 // Use 'get' function to retrieve data from the reference
                 get(userRef).then((snapshot) => {
                     if (snapshot.exists()) {
-                        sessionStorage.setItem("user-info", JSON.stringify({
+                        localStorage.setItem("user-info", JSON.stringify({
                             fullname: snapshot.val().fullname
                         }));
-                        sessionStorage.setItem("user-cred", JSON.stringify(user));
+                        localStorage.setItem("user-cred", JSON.stringify(user));
                         window.location.href = 'home.html';
 
                         notify_container.innerHTML = `<div class="text-centre p-4 fixed top-6 right-[37%] bg-white text-2xl text-black font-bold rounded-lg border-2 border-black">
