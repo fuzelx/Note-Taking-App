@@ -73,54 +73,6 @@ addNoteBtn.onclick = function() {
 };
 
 
-
-
-        // function saveNote(auth) {
-        //     var noteTitle = document.getElementById('noteTitle').value;
-        //     var noteContent = document.getElementById('noteContent').value;
-        //     var imageInput = document.getElementById('imageInput');
-        //     var videoInput = document.getElementById('videoInput');
-
-        //     var imageFile = imageInput.files[0];
-        //      var videoFile = videofile.files[0];
-        //     // Get the currently authenticated user
-        //     const user = auth.currentUser;
-          
-        //     if (user) {
-        //       // Get a reference to the "notes" node in the Realtime Database
-        //       const notesRef = ref(db, 'notes');
-          
-        //       // Generate a unique ID for the note
-        //       const newNoteRef = push(notesRef);
-          
-        //       // Upload the image to Firebase Storage
-        //       const imageRef = storageRef(storage, 'images/' + user.uid + '/' + newNoteRef.key);
-        //       uploadBytes(imageRef, imageFile)
-        //         .then(() => {
-        //           // Get the download URL for the uploaded image
-        //           return getDownloadURL(imageRef);
-        //         })
-        //         .then((downloadURL) => {
-        //           // Save the note data, including the image URL, in the Realtime Database
-        //           return set(newNoteRef, {
-        //             title: noteTitle,
-        //             content: noteContent,
-        //             timestamp: new Date().toISOString(),
-        //             userId: user.uid,
-        //             userName:auth.currentUser.displayName || 'Unknown User',
-        //             imageUrl: downloadURL  // Store the image URL in the note
-        //           });
-        //         })
-        //         .then(() => {
-        //           console.log('Note with image saved successfully');
-        //         })
-        //         .catch((error) => {
-        //           console.error('Error adding note with image: ', error);
-        //         });
-        //     } else {
-        //       console.log('User not authenticated');
-        //     }
-        //   }
           
         function saveNote(auth) {
 let uploding = document.getElementById('uploading');
@@ -139,10 +91,10 @@ setTimeout(() => {
           var noteTitle = document.getElementById('noteTitle').value;
           var noteContent = document.getElementById('noteContent').value;
           var imageInput = document.getElementById('imageInput');
-          var videoInput = document.getElementById('videoInput');
+          
         
           var imageFile = imageInput.files[0];
-          var videoFile = videoInput.files[0];
+         
         
           // Get the currently authenticated user
           const user = auth.currentUser;
@@ -156,20 +108,17 @@ setTimeout(() => {
         
             // Upload the image to Firebase Storage
             const imageRef = storageRef(storage, 'images/' + user.uid + '/' + newNoteRef.key);
-            const videoRef = storageRef(storage, 'videos/' + user.uid + '/' + newNoteRef.key);
-        
+           
             const uploadImage = uploadBytes(imageRef, imageFile);
-            const uploadVideo = uploadBytes(videoRef, videoFile);
-        
-            Promise.all([uploadImage, uploadVideo])
+           
+            Promise.all([uploadImage])
               .then(() => {
                 // Get the download URLs for the uploaded image and video
                 const getImageURL = getDownloadURL(imageRef);
-                const getVideoURL = getDownloadURL(videoRef);
-        
-                return Promise.all([getImageURL, getVideoURL]);
+                
+                return Promise.all([getImageURL]);
               })
-              .then(([imageURL, videoURL]) => {
+              .then(([imageURL]) => {
                 // Save the note data, including the image and video URLs, in the Realtime Database
                 return set(newNoteRef, {
                   title: noteTitle,
@@ -178,14 +127,14 @@ setTimeout(() => {
                   userId: user.uid,
                   userName: auth.currentUser.displayName || 'Unknown User',
                   imageUrl: imageURL, // Store the image URL in the note
-                  videoUrl: videoURL // Store the video URL in the note
+                  
                 });
               })
               .then(() => {
-                console.log('Note with image and video saved successfully');
+                console.log('Note with image  saved successfully');
               })
               .catch((error) => {
-                console.error('Error adding note with image and video: ', error);
+                console.error('Error adding note with image : ', error);
               });
           } else {
             console.log('User not authenticated');
@@ -199,76 +148,6 @@ setTimeout(() => {
         let month1 = new Date().getMonth() + 1;
         let year1 = new Date().getFullYear();
         
-
-  //       function displayNotes() {
-  //                 // Show the loader while notes are loading
-  // var loader = document.getElementById('loader');
-  // loader.style.display = 'block';
-
-  //           // Listen for child_added events in the "notes" node in the Realtime Database
-  //           onChildAdded(ref(db, 'notes'), function (childSnapshot) {
-  //             var noteData = childSnapshot.val();
-  //             var noteId = childSnapshot.key;  // Retrieve the note's unique ID
-          
-  //             var notesContainer = document.getElementById('container');
-  //             var card = document.createElement('div');
-  //             card.classList.add('p-3', 'bg-white', 'width-fit','h-fit', 'custom-shadow', 'rounded-md', 'm-3');
-          
-  //             var username = document.createElement('p');
-  //             username.classList.add('text-sm','font-semibold')
-  //             username.innerText = userInfo.fullname;
-
-  //             var time = document.createElement('span');
-  //             time.classList.add('text-xs', 'text-neutral-100', 'mt-5')
-  //             time.innerText = 'Created at: '+ noteData.timestamp;
-
-
-  //             var deleteButton = document.createElement('button');
-  //             deleteButton.classList.add('rounded-3xl');
-  //             deleteButton.textContent = '⛌';
-  //             deleteButton.onclick = function () {
-  //               deleteNote(noteId);
-  //             };
-          
-             
-  //             var titleElement = document.createElement('h2');
-  //             titleElement.classList.add('font-extrabold','mt-3','bold','md:text-2xl',  'text-left', 'text-black', 'text-xl');
-  //             titleElement.textContent = noteData.title || 'Untitled';
-          
-  //             var contentElement = document.createElement('p');
-  //             contentElement.classList.add('font-semibold','mt-3', 'text-left', 'text-black', 'text-lg', 'md:text-xl');
-  //             contentElement.textContent = noteData.content || 'No content';
-          
-  //             card.appendChild(deleteButton);
-  //             // Check if the note has an imageUrl
-  //             if (noteData.imageUrl) {
-  //               var imageElement = document.createElement('img');
-  //               imageElement.src = noteData.imageUrl;
-  //               imageElement.classList.add('max-w-full','rounded-md', 'my-3');
-  //               card.appendChild(imageElement);
-  //             }
-  //           card.appendChild(username)
-     
-  //             card.appendChild(titleElement);
-  //             card.appendChild(contentElement);
-  //             card.appendChild(time)
-          
-  //             // notesContainer.appendChild(card);
-  //             notesContainer.insertBefore(card, notesContainer.firstChild);
-                    
-  //                      // Hide the loader after notes are loaded
-  //   loader.style.display = 'none';
-  //           });
-  //         }
-          
-
-
-
-
-
-  //       // var addNoteBtn = document.getElementById('addNote');
-  //       // addNoteBtn.onclick = saveNote;
-  //       displayNotes();
 
   let nav_user = document.getElementById('acc-user');
 
@@ -337,14 +216,7 @@ function displayNotes() {
         }
         // Check if the note has a videoUrl
 
-  // Check if the note has a videoUrl
- if (noteData.videoUrl) {
-    var videoElement = document.createElement('video');
-    videoElement.src = noteData.videoUrl;
-    videoElement.controls = true; // Adds playback controls
-    videoElement.classList.add('max-w-full', 'rounded-md', 'my-3');
-    card.appendChild(videoElement);
-} 
+ 
 
     // Check if the note has a fileUrl (generic file, could be image or video)
     if (noteData.fileUrl) {
@@ -383,6 +255,8 @@ function getUserInfo(userId) {
 document.addEventListener('DOMContentLoaded', function() {
     displayNotes();
 });
+
+
 
 
 
